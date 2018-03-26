@@ -5,18 +5,13 @@ import insert from 'gulp-insert';
 import concat from 'gulp-concat';
 
 const VERSIONS = {
-    EASEL: '0.8.2',
-    PRELOAD: '0.6.2',
-    SOUNDL: '0.6.2',
-    TWEEN: '0.6.2',
-    CREATE: '0.8.2'
+    PRELOAD: '1.0.0',
+    SOUNDL: '1.0.0',
 };
 
 const SRC = {
-    EASEL: `./vendor_modules/EaselJS-${VERSIONS.EASEL}/lib/easeljs-${VERSIONS.EASEL}.combined.js`,
-    PRELOAD: `./vendor_modules/PreloadJS-${VERSIONS.PRELOAD}/lib/preloadjs-${VERSIONS.PRELOAD}.combined.js`,
-    SOUND: `./vendor_modules/SoundJS-${VERSIONS.SOUND}/lib/soundjs-${VERSIONS.SOUND}.combined.js`,
-    TWEEN: `./vendor_modules/TweenJS-${VERSIONS.TWEEN}/lib/tweenjs-${VERSIONS.TWEEN}.combined.js`
+    PRELOAD: `./preloadjs.js`,
+    SOUND: `./soundjs.js`
 };
 
 const DEST = {
@@ -34,10 +29,8 @@ function string_src(filename, string) {
 
 gulp.task('compile', () => {
     return gulp.src([
-        SRC.EASEL,
         SRC.PRELOAD,
-        SRC.SOUND,
-        SRC.TWEEN
+        SRC.SOUND
     ])
         .pipe(concat('createjs.js'))
         .pipe(insert.prepend('var createjs = (this.createjs = (this.createjs || {}));\n'))

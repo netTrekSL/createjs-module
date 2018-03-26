@@ -1,14 +1,14 @@
-# CreateJS library module for Angular and Ionic
+# SoundJS & PreloadJS library module for Angular and Ionic
 
-This is the createjs-0.8.2 collection.
+This is the preloadjs-1.0.0 & soundjs-1.0.0 collection.
 ***Now with typings!!!***
 
-* EaselJS
-* TweenJS
 * SoundJS
 * PreloadJS
 
 You can find documentation at [CreateJS](http://blog.createjs.com/).
+
+Fork of ajbarry3 [createjs-module](https://github.com/ajbarry3/createjs-module).
 
 
 
