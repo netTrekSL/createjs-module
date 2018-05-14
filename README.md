@@ -15,7 +15,7 @@ Fork of ajbarry3 [createjs-module](https://github.com/ajbarry3/createjs-module).
 ## Install
 
 ```bash
-npm install createjs-module --save
+npm install git+https://git@github.com/netTrekSL/createjs-module.git#master --save
 ```
 
 **Angular**
