@@ -14477,17 +14477,18 @@ this.createjs = this.createjs || {};
 	 * @protected
 	 */
 	p._handlePreloadComplete = function (event) {
-		var src = event.target.getItem().src;
-		this._audioSources[src] = event.result;
-		for (var i = 0, l = this._soundInstances[src].length; i < l; i++) {
-			var item = this._soundInstances[src][i];
-			item.playbackResource = this._audioSources[src];
-			// TODO consider adding play call here if playstate == playfailed
+		var src = event.target.getItem().src,
+				result = event.result,
+				instances = this._soundInstances[src];
+		this._audioSources[src] = result;
+
+		if (instances != null && instances.length > 0) {
+			for (var i=0, l=instances.length; i<l; i++) {
+				instances[i].playbackResource = result;
+				// TODO consider adding play call here if playstate == playfailed
+				// LM: SoundJS policy is not to play sounds late that previously failed, as it could play unexpectedly.
+			}
 		}
-		//LM: This line was in the above if() statement, and caused issues when there was more than one instance
-		// I was unable to reproduce the scenario, so the line was moved out of the if statement.
-		// It is possible the solution is instead to delete/splice the instance from the soundInstances[src] list instead.
-		// https://github.com/CreateJS/SoundJS/issues/269
 		this._soundInstances[src] = null;
 	};
 
