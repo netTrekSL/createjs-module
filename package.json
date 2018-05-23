@@ -1,6 +1,6 @@
 {
     "name": "createjs-module",
-    "version": "1.0.0-1",
+    "version": "1.0.2",
     "description": "PreloadJS and SoundJS for Angular and Ionic.",
     "author": "S. Liebehenz <sl@nettrek.de>",
     "main": "./createjs.js",

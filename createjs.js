@@ -11426,7 +11426,7 @@ this.createjs = this.createjs || {};
  * 		smoothly and you are supporting non-web audio browsers, do not use audio sprites for that sound if you can avoid
  * 		it.</li>
  *     <li>No guarantee that HTML audio will play back immediately, especially the first time. In some browsers
- *     (Chrome!), HTML audio will only load enough to play through at the current download speed â€“ so we rely on the
+ *     (Chrome!), HTML audio will only load enough to play through at the current download speed – so we rely on the
  *     `canplaythrough` event to determine if the audio is loaded. Since audio sprites must jump ahead to play specific
  *     sounds, the audio may not yet have downloaded fully.</li>
  *     <li>Audio sprites share the same core source, so if you have a sprite with 5 sounds and are limited to 2
@@ -14482,9 +14482,13 @@ this.createjs = this.createjs || {};
 		for (var i = 0, l = this._soundInstances[src].length; i < l; i++) {
 			var item = this._soundInstances[src][i];
 			item.playbackResource = this._audioSources[src];
-			// ToDo consider adding play call here if playstate == playfailed
-			this._soundInstances[src] = null;
+			// TODO consider adding play call here if playstate == playfailed
 		}
+		//LM: This line was in the above if() statement, and caused issues when there was more than one instance
+		// I was unable to reproduce the scenario, so the line was moved out of the if statement.
+		// It is possible the solution is instead to delete/splice the instance from the soundInstances[src] list instead.
+		// https://github.com/CreateJS/SoundJS/issues/269
+		this._soundInstances[src] = null;
 	};
 
 	/**
